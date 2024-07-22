@@ -155,8 +155,43 @@
         <origin rpy="0 0 0" xyz="0.05 0 0.08"/>
     </xacro:lidar>
 
-    <xacro:cps_additions>
-        <!-- <origin rpy="0 0 0" xyz="0.1481 0 0.16"/> -->
-    </xacro:cps_additions>
+    <joint name="camera_joint" type="fixed">
+        <xacro:insert_block name="origin"/>
+        <origin rpy="0 0 0" xyz="0.1481 0 0.16"/>
+        <parent link="trunk"/>
+        <child link="camera_link"/>
+    </joint>
+    <!-- ouster -->
+    <joint name="ouster_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0125 0 0.17"/>
+        <parent link="trunk"/>
+        <child link="os_sensor"/>
+    </joint>
+    <joint name="ouster_visual_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="ouster_joint"/>
+        <child link="ouster_link"/>
+    </joint>
+    <link name="ouster_link">
+        <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <cylinder length="0.05" radius="0.05"/>
+        </geometry>
+        </collision>
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <cylinder length="0.08" radius="0.04"/>
+        </geometry>
+        <material name="black"/>
+        </visual>
+        <inertial>
+        <mass value="1e-5"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+        </inertial>
+    </link>
+    
 
 </robot>
