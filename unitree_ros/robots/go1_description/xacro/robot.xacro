@@ -167,6 +167,8 @@
         <parent link="trunk"/>
         <child link="os_sensor"/>
     </joint>
+    <link_name="os_sensor">
+    </link>
     <joint name="ouster_visual_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <parent link="ouster_joint"/>
