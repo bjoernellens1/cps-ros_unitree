@@ -8,13 +8,13 @@
         <joint name="camera_joint" type="fixed">
             <xacro:insert_block name="origin"/>
             <origin rpy="0 0 0" xyz="0.1481 0 0.16"/>
-            <parent link="${parent}"/>
+            <parent link="trunk"/>
             <child link="camera_link"/>
         </joint>
         <!-- ouster -->
         <joint name="ouster_joint" type="fixed">
             <origin rpy="0 0 0" xyz="0.0125 0 0.17"/>
-            <parent link="${parent}"/>
+            <parent link="trunk"/>
             <child link="os_sensor"/>
         </joint>
         <joint name="ouster_visual_joint" type="fixed">
