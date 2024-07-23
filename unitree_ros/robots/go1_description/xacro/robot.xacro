@@ -155,16 +155,24 @@
         <origin rpy="0 0 0" xyz="0.05 0 0.08"/>
     </xacro:lidar>
 
-    <joint name="camera_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0.1481 0 0.16"/>
+    <joint name="camera_base_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.150 0 0.147"/>
         <parent link="trunk"/>
+        <child link="camera_base"/>
+    </joint>
+    <link name="camera_base">
+    </link>
+    <joint name="camera_joint" type="fixed">
+    <!-- is in fact the rgb camera position which is offset + 17.5 mm y direction -->
+        <origin rpy="0 0 0" xyz="0 0.0175 0"/>
+        <parent link="camera_base"/>
         <child link="camera_link"/>
     </joint>
     <link name="camera_link">
     </link>
     <!-- ouster -->
     <joint name="ouster_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0.0125 0 0.17"/>
+        <origin rpy="0 0 0" xyz="0.072 0 0.214"/>
         <parent link="trunk"/>
         <child link="os_sensor"/>
     </joint>
